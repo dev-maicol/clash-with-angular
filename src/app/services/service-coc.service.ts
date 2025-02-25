@@ -7,24 +7,28 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ServiceCocService {
-  private urlBaseCOC = environment.urlBaseCOC + 'clans/%23'
+  // private urlBaseCOC = environment.urlBaseCOC + 'clans/%23'
 
-  private urlTest = environment.urlBaseBack
+  // private urlTest = environment.urlBaseBack
+  private url = environment.urlBaseBack
 
   constructor(private httpClient: HttpClient) { }
 
-  getInformationWar(tag: string): Observable<any> {
-    // console.log('Tag recibido en serviceCoc: ' + tag);
+  // getInformationWar(tag: string): Observable<any> {
+  //   // console.log('Tag recibido en serviceCoc: ' + tag);
     
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${environment.apiKeyCOC}`, // Si usas un token de autorización
-      'Content-Type': 'application/json' // Opcional, si la API lo requiere
-    });
+  //   const headers = new HttpHeaders({
+  //     'Authorization': `Bearer ${environment.apiKeyCOC}`, // Si usas un token de autorización
+  //     'Content-Type': 'application/json' // Opcional, si la API lo requiere
+  //   });
 
-    return this.httpClient.get(this.urlBaseCOC + tag + '/currentwar', { headers })
-  }
+  //   return this.httpClient.get(this.urlBaseCOC + tag + '/currentwar', { headers })
+  // }
 
-  testInformationWar(): Observable<any>{
-    return this.httpClient.get(this.urlTest + 'clans/war/RUG0LC2Q')
+  // testInformationWar(): Observable<any>{
+  //   return this.httpClient.get(this.urlTest + 'clans/war/RUG0LC2Q')
+  // }
+  getInformationCapital(tag: string): Observable<any>{
+    return this.httpClient.get(this.url + 'clans/capital/' + tag)
   }
 }

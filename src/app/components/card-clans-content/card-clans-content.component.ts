@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { ClanSUPA } from '../../models/clan-SUPA.model';
@@ -23,23 +23,15 @@ import { ServiceCocService } from '../../services/service-coc.service';
 })
 export class CardClansContentComponent {
   @Input() clans: ClanSUPA[] | undefined
-  @Input() titleCard: String = ''
+  @Input() titleCard: string = ''
   @Input() cwl: Boolean = false
 
   clanForm!: FormGroup
 
-  constructor(private router: Router, private cocService: ServiceCocService) {
-    // if (this.cwl) {
-    //   this.clanForm = new FormGroup({
-    //     clanSelect: new FormControl('', [Validators.required]),
-    //     dayCWL: new FormControl('', [Validators.required])
-    //   })
-    // } else {
-    //   this.clanForm = new FormGroup({
-    //     clanSelect: new FormControl('', [Validators.required])
-    //   })
+  @Output() formData: EventEmitter<Array<string>> = new EventEmitter<Array<string>>
 
-    // }
+  constructor(private router: Router, private cocService: ServiceCocService) {
+   
   }
 
   ngOnInit() {
@@ -61,31 +53,23 @@ export class CardClansContentComponent {
 
       this.openSnackBar('Searching information', 'Close')
 
-      this.clanForm.disable()
+      // this.clanForm.disable()
 
       // Enviar la el formulario a su padre, falta
+      this.formData.emit([this.titleCard, this.clanForm.get('clanSelect')?.value, this.clanForm.get('dayCWL')?.value])
 
-      this.cocService.getInformationWar(this.clanForm.get('clanSelect')?.value).subscribe({
-        next: (data) => {
-          console.log('Datos recibidos:', data);
-        },
-        error: (err) => {
-          console.error('Error en la consulta:', err);
-          this.clanForm.enable();
-        },
-        complete: () => {
-          // Habilitar el formulario cuando la consulta finalice
-          this.clanForm.enable();
-        }
-      })
-
-      // // Simular consulta con un retraso de 2 segundos
-      // setTimeout(() => {
-      //   console.log('Simulación de consulta completada.');
-
-      //   // Habilitar el formulario después de 2 segundos
-      //   this.clanForm.enable();
-      // }, 2000);
+      // this.cocService.getInformationWar(this.clanForm.get('clanSelect')?.value).subscribe({
+      //   next: (data) => {
+      //     console.log('Datos recibidos:', data);
+      //   },
+      //   error: (err) => {
+      //     console.error('Error en la consulta:', err);
+      //     this.clanForm.enable();
+      //   },
+      //   complete: () => {
+      //     this.clanForm.enable();
+      //   }
+      // })
     }
   }
 

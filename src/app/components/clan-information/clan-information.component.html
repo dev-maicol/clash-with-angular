@@ -1,0 +1,14 @@
+<section>
+  <p>clan-information works!</p>
+  <mat-form-field class="example-full-width">
+    <mat-label>Information</mat-label>
+    <textarea matInput placeholder="Ex. 100 Main St">{{ data | json}}</textarea>
+  </mat-form-field>
+  <!-- <div *ngIf="data">
+    <h3>Datos Recibidos:</h3>
+    <pre>{{ data | json }}</pre>
+  </div> -->
+  <br>
+  <button (click)="back()">Back</button>
+
+</section>
