@@ -10,8 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { timeInterval } from 'rxjs';
+// import { MatSnackBar } from '@angular/material/snack-bar';
 import { ServiceCocService } from '../../services/service-coc.service';
 
 @Component({
@@ -51,7 +50,7 @@ export class CardClansContentComponent {
 
     if (this.clanForm.valid) {
 
-      this.openSnackBar('Searching information', 'Close')
+      // this.openSnackBar('Searching information', 'Close')
 
       // this.clanForm.disable()
 
@@ -73,13 +72,13 @@ export class CardClansContentComponent {
     }
   }
 
-  private _snackBar = inject(MatSnackBar);
+  // private _snackBar = inject(MatSnackBar);
 
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 2000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-    });
-  }
+  // openSnackBar(message: string, action: string) {
+  //   this._snackBar.open(message, action, {
+  //     duration: 2000,
+  //     horizontalPosition: 'center',
+  //     verticalPosition: 'bottom',
+  //   });
+  // }
 }

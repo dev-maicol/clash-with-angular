@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CardClansContentComponent } from '../card-clans-content/card-clans-content.component';
 
 import { Router, RouterOutlet } from '@angular/router';
@@ -7,6 +7,8 @@ import { ServiceSupabaseService } from '../../services/service-supabase.service'
 import { catchError, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ServiceCocService } from '../../services/service-coc.service';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-list-cards',
@@ -77,11 +79,15 @@ export class ListCardsComponent {
     // console.log({title, tag, day})
     // CAPITAL
     if (title == 'CAPITAL') {
+      this.openSnackBar(`Searching information -> ${title}`, 'Close')
+
       this.serviceCOC.getInformationCapital(tag).subscribe({
+        
         next: (data) => {
           if(data){
             // console.log('Enviando data:::', data);
             sessionStorage.setItem('clanData', JSON.stringify(data));
+            
             this.router.navigate(['/information'])
           }else{
             console.log('Error en la data o vacio');
@@ -98,7 +104,48 @@ export class ListCardsComponent {
           
         }
       })
+    }else{
+      if (title == 'WAR') {
+        this.openSnackBar(`Searching information -> ${title}`, 'Close')
+  
+        this.serviceCOC.getInformationWar(tag).subscribe({
+          
+          next: (data) => {
+            if(data){
+              // console.log('Enviando data:::', data);
+              sessionStorage.setItem('clanData', JSON.stringify(data));
+              
+              this.router.navigate(['/information'])
+            }else{
+              console.log('Error en la data o vacio');
+              this.openSnackBar(`Error or data empty -> ${title}`, 'Close')
+              sessionStorage.setItem('clanData', '');
+            }
+          },
+          error: (err) => {
+            console.error('Error en la consulta:', err);
+            this.openSnackBar(`Query error -> ${JSON.stringify(err)}`, 'Close')
+            // alert('Error en la consulta:' + err)
+            sessionStorage.setItem('clanData', '');
+          },
+          complete: () => {
+            // Habilitar el formulario cuando la consulta finalice
+            
+          }
+        })
+      }
     }
 
   }
+
+  private _snackBar = inject(MatSnackBar);
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2500,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+    });
+  }
+
 }

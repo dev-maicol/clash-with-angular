@@ -1,14 +1,22 @@
+<!-- Cuando el clan no tiene activado el registro de guerra en publico  -->
+<!-- {"reason":"accessDenied"} -->
 <section>
-  <p>clan-information works!</p>
+  <p>Information</p>
   <mat-form-field class="example-full-width">
     <mat-label>Information</mat-label>
-    <textarea matInput placeholder="Ex. 100 Main St">{{ data | json}}</textarea>
+    <textarea 
+    matInput 
+    placeholder="Information Clash of Clans"
+    [(ngModel)]="textCopy"
+    rows="10"
+    >
+    <!-- {{ data | json}} -->
+  </textarea>
   </mat-form-field>
-  <!-- <div *ngIf="data">
-    <h3>Datos Recibidos:</h3>
-    <pre>{{ data | json }}</pre>
-  </div> -->
+  
   <br>
-  <button (click)="back()">Back</button>
-
+  <!-- <button (click)="back()">Back</button>
+  <button (click)="copy()">Copy</button> -->
+  <button mat-flat-button (click)="copy()">Copy</button>
+  <button mat-stroked-button (click)="back()">Back</button>
 </section>

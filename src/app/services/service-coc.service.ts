@@ -31,4 +31,8 @@ export class ServiceCocService {
   getInformationCapital(tag: string): Observable<any>{
     return this.httpClient.get(this.url + 'clans/capital/' + tag)
   }
+
+  getInformationWar(tag: string): Observable<any>{
+    return this.httpClient.get(this.url + 'clans/war/' + tag )
+  }
 }

@@ -2,8 +2,22 @@ mat-form-field{
   width: 100%;
 }
 section{
-  padding: 1rem;
+  padding: 1rem 5rem 1rem 5rem;
+  max-width: 100%;
+  /* text-align: center; */
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
 }
-textarea{
-  height: fit-content;
+button{
+  max-width: 100%;
+  width: 500px;
+  margin-bottom: .5rem;
+}
+
+@media( max-width: 500px){
+  section{
+    padding: 1rem;
+  }
 }
