@@ -34,6 +34,7 @@ export class CardClansContentComponent {
   }
 
   ngOnInit() {
+    this.titleCard = this.titleCard.charAt(0) + this.titleCard.toLowerCase().slice(1, this.titleCard.length)
     if (this.cwl) {
       this.clanForm = new FormGroup({
         clanSelect: new FormControl('', [Validators.required]),

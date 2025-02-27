@@ -8,9 +8,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import {MatButtonModule} from '@angular/material/button';
 
+import {MatCardModule} from '@angular/material/card';
+
 @Component({
   selector: 'app-clan-information',
-  imports: [MatInputModule, CommonModule, FormsModule, MatButtonModule],
+  imports: [MatInputModule, CommonModule, FormsModule, MatButtonModule, MatCardModule],
   templateUrl: './clan-information.component.html',
   styleUrl: './clan-information.component.css'
 })
@@ -19,13 +21,14 @@ export class ClanInformationComponent {
 
   textCopy: string = ''
 
+  title: string = ''
+
   constructor(private router: Router, private activeRouter: ActivatedRoute) { }
 
   ngOnInit() {
-    // this.data = history.state.data;
     this.data = history.state.data || JSON.parse(sessionStorage.getItem('clanData') || '{}');
-    // console.log('Data del storage o recibida:::', this.data);
     this.textCopy = JSON.stringify(this.data)
+    this.title = sessionStorage.getItem('title') || ''
   }
 
   back() {

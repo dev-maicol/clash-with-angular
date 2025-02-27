@@ -1,8 +1,26 @@
 <!-- Cuando el clan no tiene activado el registro de guerra en publico  -->
 <!-- {"reason":"accessDenied"} -->
 <section>
-  <p>Information</p>
-  <mat-form-field class="example-full-width">
+  <!-- <p>Information</p> -->
+  <mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Information</mat-card-title>
+      <mat-card-subtitle>{{ title}}</mat-card-subtitle>
+    </mat-card-header>
+    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    <mat-card-content>
+      <p>
+        {{ textCopy}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-stroked-button (click)="back()">BACK</button>
+      <button mat-flat-button (click)="copy()">COPY</button>
+    </mat-card-actions>
+  </mat-card>
+  
+  <!-- <mat-form-field class="example-full-width">
     <mat-label>Information</mat-label>
     <textarea 
     matInput 
@@ -10,13 +28,10 @@
     [(ngModel)]="textCopy"
     rows="10"
     >
-    <!-- {{ data | json}} -->
   </textarea>
-  </mat-form-field>
-  
-  <br>
+  </mat-form-field> -->
   <!-- <button (click)="back()">Back</button>
   <button (click)="copy()">Copy</button> -->
-  <button mat-flat-button (click)="copy()">Copy</button>
-  <button mat-stroked-button (click)="back()">Back</button>
+  <!-- <button mat-flat-button (click)="copy()">Copy</button>
+  <button mat-stroked-button (click)="back()">Back</button> -->
 </section>

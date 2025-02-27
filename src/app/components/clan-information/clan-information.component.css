@@ -11,13 +11,28 @@ section{
   align-items: center;
 }
 button{
-  max-width: 100%;
+  /* max-width: 100%; */
+  width: 100%;
+  margin-left: .5rem;
+  margin-right: .5rem;
+}
+
+.example-card {
+  max-width: 800px;
   width: 500px;
-  margin-bottom: .5rem;
+}
+
+.example-header-image {
+  background-image: url('../../../assets/images/capital.webp');
+  background-size: cover;
 }
 
 @media( max-width: 500px){
   section{
     padding: 1rem;
   }
+  .example-card {
+    width: 100%;
+  }
 }
+

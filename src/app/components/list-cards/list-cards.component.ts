@@ -78,7 +78,7 @@ export class ListCardsComponent {
     const day = dataClan[2] ? dataClan[2] : null
     // console.log({title, tag, day})
     // CAPITAL
-    if (title == 'CAPITAL') {
+    if (title == 'Capital') {
       this.openSnackBar(`Searching information -> ${title}`, 'Close')
 
       this.serviceCOC.getInformationCapital(tag).subscribe({
@@ -86,18 +86,21 @@ export class ListCardsComponent {
         next: (data) => {
           if(data){
             // console.log('Enviando data:::', data);
-            sessionStorage.setItem('clanData', JSON.stringify(data));
+            sessionStorage.setItem('clanData', JSON.stringify(data))
+            sessionStorage.setItem('title', title)
             
             this.router.navigate(['/information'])
           }else{
             console.log('Error en la data o vacio');
             sessionStorage.setItem('clanData', '');
+            sessionStorage.setItem('title', '')
           }
         },
         error: (err) => {
           console.error('Error en la consulta:', err);
           // alert('Error en la consulta:' + err)
           sessionStorage.setItem('clanData', '');
+          sessionStorage.setItem('title', '')
         },
         complete: () => {
           // Habilitar el formulario cuando la consulta finalice
@@ -105,7 +108,7 @@ export class ListCardsComponent {
         }
       })
     }else{
-      if (title == 'WAR') {
+      if (title == 'War') {
         this.openSnackBar(`Searching information -> ${title}`, 'Close')
   
         this.serviceCOC.getInformationWar(tag).subscribe({
@@ -114,12 +117,13 @@ export class ListCardsComponent {
             if(data){
               // console.log('Enviando data:::', data);
               sessionStorage.setItem('clanData', JSON.stringify(data));
-              
+              sessionStorage.setItem('title', title)
               this.router.navigate(['/information'])
             }else{
               console.log('Error en la data o vacio');
               this.openSnackBar(`Error or data empty -> ${title}`, 'Close')
               sessionStorage.setItem('clanData', '');
+              sessionStorage.setItem('title', '')
             }
           },
           error: (err) => {
@@ -127,6 +131,7 @@ export class ListCardsComponent {
             this.openSnackBar(`Query error -> ${JSON.stringify(err)}`, 'Close')
             // alert('Error en la consulta:' + err)
             sessionStorage.setItem('clanData', '');
+            sessionStorage.setItem('title', '')
           },
           complete: () => {
             // Habilitar el formulario cuando la consulta finalice
