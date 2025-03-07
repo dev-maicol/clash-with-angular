@@ -23,7 +23,19 @@ button{
 }
 
 .example-header-image {
+  /* background-image: url('../../../assets/images/capital.webp'); */
+  background-size: cover;
+}
+.capital{
   background-image: url('../../../assets/images/capital.webp');
+  background-size: cover;
+}
+.cwl{
+  background-image: url('../../../assets/images/cwl.webp');
+  background-size: cover;
+}
+.war{
+  background-image: url('../../../assets/images/war.webp');
   background-size: cover;
 }
 
@@ -33,6 +45,11 @@ button{
   }
   .example-card {
     width: 100%;
+  }
+  mat-card-actions{
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
   }
 }
 

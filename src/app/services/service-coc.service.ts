@@ -35,4 +35,8 @@ export class ServiceCocService {
   getInformationWar(tag: string): Observable<any>{
     return this.httpClient.get(this.url + 'clans/war/' + tag )
   }
+
+  getInformationCWL(tag: string, day: number): Observable<any>{
+    return this.httpClient.get(this.url + 'clans/cwl/' + tag + '/' + day)
+  }
 }

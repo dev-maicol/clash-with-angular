@@ -75,7 +75,7 @@ export class ListCardsComponent {
 
     const title = dataClan[0]
     const tag = dataClan[1]
-    const day = dataClan[2] ? dataClan[2] : null
+    const day: number = dataClan[2] ? Number(dataClan[2]) : 0
     // console.log({title, tag, day})
     // CAPITAL
     if (title == 'Capital') {
@@ -112,7 +112,6 @@ export class ListCardsComponent {
         this.openSnackBar(`Searching information -> ${title}`, 'Close')
   
         this.serviceCOC.getInformationWar(tag).subscribe({
-          
           next: (data) => {
             if(data){
               // console.log('Enviando data:::', data);
@@ -138,6 +137,36 @@ export class ListCardsComponent {
             
           }
         })
+      }else{
+        if(title == 'Cwl'){
+          this.openSnackBar(`Searching information -> ${title}`, 'Close')
+          this.serviceCOC.getInformationCWL(tag, day).subscribe({
+            next: (data) => {
+              if(data){
+                // console.log('Enviando data:::', data);
+                sessionStorage.setItem('clanData', JSON.stringify(data));
+                sessionStorage.setItem('title', title)
+                this.router.navigate(['/information'])
+              }else{
+                console.log('Error en la data o vacio');
+                this.openSnackBar(`Error or data empty -> ${title}`, 'Close')
+                sessionStorage.setItem('clanData', '');
+                sessionStorage.setItem('title', '')
+              }
+            },
+            error: (err) => {
+              console.error('Error en la consulta:', err);
+              this.openSnackBar(`Query error -> ${JSON.stringify(err)}`, 'Close')
+              // alert('Error en la consulta:' + err)
+              sessionStorage.setItem('clanData', '');
+              sessionStorage.setItem('title', '')
+            },
+            complete: () => {
+              // Habilitar el formulario cuando la consulta finalice
+              
+            }
+          })
+        }
       }
     }
 
