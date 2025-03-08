@@ -21,13 +21,15 @@ import { ServiceCocService } from '../../services/service-coc.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardClansContentComponent {
-  @Input() clans: ClanSUPA[] | undefined
+  @Input() clans: ClanSUPA[] | any
   @Input() titleCard: string = ''
   @Input() cwl: Boolean = false
 
   clanForm!: FormGroup
 
   @Output() formData: EventEmitter<Array<string>> = new EventEmitter<Array<string>>
+
+  clanSelect: string = ''
 
   constructor(private router: Router, private cocService: ServiceCocService) {
    
@@ -50,13 +52,24 @@ export class CardClansContentComponent {
   onSubmit() {
 
     if (this.clanForm.valid) {
-
-      // this.openSnackBar('Searching information', 'Close')
-
-      // this.clanForm.disable()
-
+      const temp = this.clanForm.get('clanSelect')?.value
+      // console.log(this.clans);
+      
+      // console.log(this.clanForm.get('clanSelect')?.value);
+      // this.clanSelect = this.clans[temp] || ''
+      // console.log(this.clanForm.get('clanSelect'));
+      // console.log(this.clans[temp]);
+      for(let cc of this.clans){
+        if(cc.clan_tag == temp){
+          // console.log(cc.clan_name);
+          this.clanSelect = cc.clan_name
+          break
+        }
+      }
+      
+      
       // Enviar la el formulario a su padre, falta
-      this.formData.emit([this.titleCard, this.clanForm.get('clanSelect')?.value, this.clanForm.get('dayCWL')?.value])
+      this.formData.emit([this.titleCard, this.clanForm.get('clanSelect')?.value, this.clanForm.get('dayCWL')?.value, this.clanSelect])
 
       // this.cocService.getInformationWar(this.clanForm.get('clanSelect')?.value).subscribe({
       //   next: (data) => {

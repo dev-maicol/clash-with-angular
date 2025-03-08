@@ -76,12 +76,13 @@ export class ListCardsComponent {
     const title = dataClan[0]
     const tag = dataClan[1]
     const day: number = dataClan[2] ? Number(dataClan[2]) : 0
+    const clanSelect = dataClan[dataClan.length - 1]
     // console.log({title, tag, day})
     // CAPITAL
     if (title == 'Capital') {
       this.openSnackBar(`Searching information -> ${title}`, 'Close')
 
-      this.serviceCOC.getInformationCapital(tag).subscribe({
+      this.serviceCOC.getInformationCapital(tag, clanSelect).subscribe({
         
         next: (data) => {
           if(data){

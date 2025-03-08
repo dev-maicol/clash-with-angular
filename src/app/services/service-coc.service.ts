@@ -28,8 +28,8 @@ export class ServiceCocService {
   // testInformationWar(): Observable<any>{
   //   return this.httpClient.get(this.urlTest + 'clans/war/RUG0LC2Q')
   // }
-  getInformationCapital(tag: string): Observable<any>{
-    return this.httpClient.get(this.url + 'clans/capital/' + tag)
+  getInformationCapital(tag: string, clanSelect: string): Observable<any>{
+    return this.httpClient.get(this.url + 'clans/capital/' + tag + '/' + clanSelect)
   }
 
   getInformationWar(tag: string): Observable<any>{

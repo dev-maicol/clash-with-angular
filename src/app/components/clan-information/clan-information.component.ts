@@ -31,14 +31,19 @@ export class ClanInformationComponent {
     this.title = sessionStorage.getItem('title') || ''
 
     if(this.data){
-      if(this.title == 'Cwl'){
-        if(this.data.message){
-          this.textCopy = this.data.message
-        }
+      if(this.data.message){
+        this.textCopy = this.data.message
+      }
+      // if(this.title == 'Cwl'){
+      //   if(this.data.message){
+      //     this.textCopy = this.data.message
+      //   }else{
+      //     if()
+      //   }
         // else{
         //   this.getInformationCWL()
         // }
-      }
+      // }
     }else{
       this.textCopy = 'Error, please contact administrator :('
     }

@@ -13,6 +13,7 @@
           <mat-option *ngFor="let cc of clans" value="{{cc.clan_tag}}" [disabled]="!cc.clan_state">{{ cc.clan_name}}</mat-option>
         </mat-select>
       </mat-form-field>
+      <input type="text" value="{{ clanSelect}}" type="hidden">
       <mat-form-field style="width: 100%;" *ngIf="cwl">
         <mat-label>Select Day CWL</mat-label>
         <mat-select id="dayCWL" formControlName="dayCWL">
