@@ -1,12 +1,16 @@
 <!-- Cuando el clan no tiene activado el registro de guerra en publico  -->
 <!-- {"reason":"accessDenied"} -->
 <section>
+  <app-information-consults></app-information-consults>
+
+</section>
+<section>
   <!-- <p>Information</p> -->
   <mat-card class="example-card" appearance="outlined">
     <mat-card-header>
       <!-- class="example-header-image" -->
-      <div mat-card-avatar 
-      
+      <div mat-card-avatar
+
       [ngClass]="getCardClass(title)"
       ></div>
       <mat-card-title>Information</mat-card-title>
@@ -23,11 +27,11 @@
       <button mat-flat-button (click)="copy()">COPY</button>
     </mat-card-actions>
   </mat-card>
-  
+
   <!-- <mat-form-field class="example-full-width">
     <mat-label>Information</mat-label>
-    <textarea 
-    matInput 
+    <textarea
+    matInput
     placeholder="Information Clash of Clans"
     [(ngModel)]="textCopy"
     rows="10"

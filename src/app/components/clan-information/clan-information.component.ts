@@ -10,9 +10,11 @@ import {MatButtonModule} from '@angular/material/button';
 
 import {MatCardModule} from '@angular/material/card';
 
+import { InformationConsultsComponent } from '../information-consults/information-consults.component';
+
 @Component({
   selector: 'app-clan-information',
-  imports: [MatInputModule, CommonModule, FormsModule, MatButtonModule, MatCardModule],
+  imports: [MatInputModule, CommonModule, FormsModule, MatButtonModule, MatCardModule, InformationConsultsComponent],
   templateUrl: './clan-information.component.html',
   styleUrl: './clan-information.component.css'
 })

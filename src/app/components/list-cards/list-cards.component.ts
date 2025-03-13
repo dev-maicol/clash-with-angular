@@ -10,9 +10,11 @@ import { ServiceCocService } from '../../services/service-coc.service';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { InformationConsultsComponent } from '../information-consults/information-consults.component';
+
 @Component({
   selector: 'app-list-cards',
-  imports: [CardClansContentComponent],
+  imports: [CardClansContentComponent, InformationConsultsComponent],
   templateUrl: './list-cards.component.html',
   styleUrl: './list-cards.component.css'
 })
@@ -108,7 +110,7 @@ export class ListCardsComponent {
         this.serviceCOC.getInformationWar(tag).subscribe({
           next: (data) => {
             if(data){
-              console.log('Enviando data:::', data);
+              // console.log('Enviando data:::', data);
               sessionStorage.setItem('clanData', JSON.stringify(data));
               sessionStorage.setItem('title', title)
               this.router.navigate(['/information'])

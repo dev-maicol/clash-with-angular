@@ -69,3 +69,9 @@ main {
     margin-block: 1.5rem;
   }
 }
+
+section{
+  padding-top: .5rem;
+  display: flex;
+  justify-content: center;
+}
