@@ -1,25 +1,26 @@
 <main class="main">
-  
+
   <div class="content">
-    
-    <app-card-clans-content 
-    [cwl]="false" 
-    [titleCard]="titleWar" 
+
+    <app-card-clans-content
+    [cwl]="false"
+    [titleCard]="titleWar"
     [clans]="clans"
     (formData)="findInformationClan($event)"
+
      />
 
-    <app-card-clans-content 
-    [cwl]="true" 
-    [titleCard]="titleCWL" 
-    [clans]="clans" 
+    <app-card-clans-content
+    [cwl]="true"
+    [titleCard]="titleCWL"
+    [clans]="clans"
     (formData)="findInformationClan($event)"
     />
 
-    <app-card-clans-content 
-    [cwl]="false" 
-    [titleCard]="titleCapital" 
-    [clans]="clans" 
+    <app-card-clans-content
+    [cwl]="false"
+    [titleCard]="titleCapital"
+    [clans]="clans"
     (formData)="findInformationClan($event)"
     />
   </div>

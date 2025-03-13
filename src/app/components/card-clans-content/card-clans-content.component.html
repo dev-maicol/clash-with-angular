@@ -1,5 +1,5 @@
 <mat-card class="example-card" appearance="outlined">
-  <mat-card-header>
+  <mat-card-header style="display: flex; justify-content: center;">
     <!-- <div mat-card-avatar class="example-header-image"></div> -->
     <mat-card-title style="margin-bottom: .5rem;">{{titleCard}} Information</mat-card-title>
     <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
@@ -26,11 +26,11 @@
           <mat-option  value="7" >7</mat-option>
         </mat-select>
       </mat-form-field>
-      
-      <button mat-stroked-button type="submit" [disabled]="clanForm.invalid">Search</button>
+
+      <button mat-flat-button type="submit" [disabled]="clanForm.invalid">Search</button>
       <!-- <button mat-flat-button (click)="backToPage()">Cancel</button> -->
       <!-- <button (click)="backToPage()" class="btn-retornar">Cancelar</button> -->
-  
+
     </form>
   </mat-card-content>
   <mat-card-actions>

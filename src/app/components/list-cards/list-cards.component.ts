@@ -24,17 +24,10 @@ export class ListCardsComponent {
     {
       id: 1,
       clan_tag: '#AGDHBC123',
-      clan_name: 'Resistencia ABC',
+      clan_name: 'Loading information...',
       clan_state: true,
       created_at: new Date()
-    },
-    {
-      id: 2,
-      clan_tag: '#XYZahgd',
-      clan_name: 'Otro clan dedasdsd',
-      clan_state: true,
-      created_at: new Date()
-    },
+    }
   ]
 
   jsonData: any;
@@ -83,13 +76,13 @@ export class ListCardsComponent {
       this.openSnackBar(`Searching information -> ${title}`, 'Close')
 
       this.serviceCOC.getInformationCapital(tag, clanSelect).subscribe({
-        
+
         next: (data) => {
           if(data){
             // console.log('Enviando data:::', data);
             sessionStorage.setItem('clanData', JSON.stringify(data))
             sessionStorage.setItem('title', title)
-            
+
             this.router.navigate(['/information'])
           }else{
             console.log('Error en la data o vacio');
@@ -105,17 +98,17 @@ export class ListCardsComponent {
         },
         complete: () => {
           // Habilitar el formulario cuando la consulta finalice
-          
+
         }
       })
     }else{
       if (title == 'War') {
         this.openSnackBar(`Searching information -> ${title}`, 'Close')
-  
+
         this.serviceCOC.getInformationWar(tag).subscribe({
           next: (data) => {
             if(data){
-              // console.log('Enviando data:::', data);
+              console.log('Enviando data:::', data);
               sessionStorage.setItem('clanData', JSON.stringify(data));
               sessionStorage.setItem('title', title)
               this.router.navigate(['/information'])
@@ -135,7 +128,7 @@ export class ListCardsComponent {
           },
           complete: () => {
             // Habilitar el formulario cuando la consulta finalice
-            
+
           }
         })
       }else{
@@ -164,7 +157,7 @@ export class ListCardsComponent {
             },
             complete: () => {
               // Habilitar el formulario cuando la consulta finalice
-              
+
             }
           })
         }

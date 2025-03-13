@@ -16,7 +16,7 @@ export class ServiceCocService {
 
   // getInformationWar(tag: string): Observable<any> {
   //   // console.log('Tag recibido en serviceCoc: ' + tag);
-    
+
   //   const headers = new HttpHeaders({
   //     'Authorization': `Bearer ${environment.apiKeyCOC}`, // Si usas un token de autorización
   //     'Content-Type': 'application/json' // Opcional, si la API lo requiere
@@ -38,5 +38,9 @@ export class ServiceCocService {
 
   getInformationCWL(tag: string, day: number): Observable<any>{
     return this.httpClient.get(this.url + 'clans/cwl/' + tag + '/' + day)
+  }
+
+  getTotalRegisters(): Observable<any>{
+    return this.httpClient.get(this.url + 'registers')
   }
 }

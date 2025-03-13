@@ -24,4 +24,8 @@ export class ServiceSupabaseService {
 
     return this.httpClient.get<ClanSUPA[]>(this.urlAPISUPA, { headers })
   }
+
+  getTotalBack(): Observable<any>{
+    return this.httpClient.get(environment.urlBaseBack + 'total')
+  }
 }
